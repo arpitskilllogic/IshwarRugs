@@ -78,18 +78,18 @@ export default function Home() {
                   </Link>
                 </div>
                 <div className="order-1 lg:order-2">
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="grid grid-cols-2 gap-8">
                     {!contemporaryLoading && contemporaryCollections?.slice(0, 4).map((collection, index) => (
-                      <div key={collection.id} className="relative group overflow-hidden rounded-2xl premium-shadow">
+                      <div key={collection.id} className="relative group overflow-hidden rounded-3xl premium-shadow">
                         <img
                           src={collection.heroImage}
                           alt={collection.name}
-                          className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"
+                          className="w-full h-96 md:h-[28rem] lg:h-[32rem] object-cover transition-transform duration-700 group-hover:scale-110"
                           loading="lazy"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                          <h4 className="text-white font-serif text-lg font-bold">{collection.name}</h4>
+                        <div className="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <h4 className="text-white font-serif text-xl font-bold">{collection.name}</h4>
                         </div>
                       </div>
                     ))}
@@ -100,18 +100,18 @@ export default function Home() {
               {/* Modern Section */}
               <div className="grid lg:grid-cols-2 gap-16 items-center">
                 <div>
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="grid grid-cols-2 gap-8">
                     {!modernLoading && modernCollections?.slice(0, 4).map((collection, index) => (
-                      <div key={collection.id} className="relative group overflow-hidden rounded-2xl premium-shadow">
+                      <div key={collection.id} className="relative group overflow-hidden rounded-3xl premium-shadow">
                         <img
                           src={collection.heroImage}
                           alt={collection.name}
-                          className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"
+                          className="w-full h-96 md:h-[28rem] lg:h-[32rem] object-cover transition-transform duration-700 group-hover:scale-110"
                           loading="lazy"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                          <h4 className="text-white font-serif text-lg font-bold">{collection.name}</h4>
+                        <div className="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <h4 className="text-white font-serif text-xl font-bold">{collection.name}</h4>
                         </div>
                       </div>
                     ))}
@@ -152,18 +152,18 @@ export default function Home() {
                   </Link>
                 </div>
                 <div className="order-1 lg:order-2">
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="grid grid-cols-2 gap-8">
                     {!traditionalLoading && traditionalCollections?.slice(0, 4).map((collection, index) => (
-                      <div key={collection.id} className="relative group overflow-hidden rounded-2xl premium-shadow">
+                      <div key={collection.id} className="relative group overflow-hidden rounded-3xl premium-shadow">
                         <img
                           src={collection.heroImage}
                           alt={collection.name}
-                          className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"
+                          className="w-full h-96 md:h-[28rem] lg:h-[32rem] object-cover transition-transform duration-700 group-hover:scale-110"
                           loading="lazy"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                          <h4 className="text-white font-serif text-lg font-bold">{collection.name}</h4>
+                        <div className="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <h4 className="text-white font-serif text-xl font-bold">{collection.name}</h4>
                         </div>
                       </div>
                     ))}
@@ -194,36 +194,36 @@ export default function Home() {
       )}
 
       {/* Design Emotion Video Section */}
-      <section className="py-20 bg-primary-brown">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-warm-gold mb-4">
+      <section className="py-32 bg-gradient-to-b from-luxury-brown to-deep-charcoal">
+        <div className="max-w-8xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-5xl md:text-7xl font-bold text-premium-gold mb-6">
               DESIGN EMOTION
             </h2>
-            <h3 className="font-serif text-2xl md:text-3xl text-cream">
+            <h3 className="font-serif text-2xl md:text-4xl text-foreground/90 font-light">
               ISHWAR AND THE BIRTH OF THE BEAUTIFUL
             </h3>
           </div>
           
-          <div className="relative bg-black rounded-xl overflow-hidden shadow-2xl">
+          <div className="relative bg-black rounded-3xl overflow-hidden premium-shadow">
             <img
               src="https://images.unsplash.com/photo-1591088398332-8a7791972843?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600"
               alt="Carpet weaving process showing artisan craftsmanship"
-              className="w-full h-96 object-cover"
+              className="w-full h-[32rem] md:h-[40rem] object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex items-center justify-center">
               <Button
                 variant="ghost"
                 size="icon"
-                className="bg-warm-gold text-primary-brown w-20 h-20 rounded-full hover:bg-opacity-90 transition-all"
+                className="bg-premium-gold text-primary-brown w-24 h-24 rounded-full hover:bg-warm-gold transition-all duration-300 hover:scale-110 premium-shadow"
               >
-                <Play className="h-8 w-8 ml-1" />
+                <Play className="h-10 w-10 ml-1" />
               </Button>
             </div>
           </div>
           
-          <p className="text-center text-cream text-lg mt-8 leading-relaxed">
+          <p className="text-center text-foreground/80 text-xl mt-10 leading-relaxed max-w-5xl mx-auto font-light">
             Watch our series of exclusive interviews with distinguished figures from the world of art, 
             architecture, and design. Where we explore the unique synergy between Art and Luxury and 
             how the two concepts intricately intertwine within the realm of interior design.
