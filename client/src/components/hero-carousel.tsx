@@ -83,24 +83,24 @@ export default function HeroCarousel() {
               className="w-full h-full object-cover"
               loading={index === 0 ? "eager" : "lazy"}
             />
-            <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center text-white max-w-4xl px-4">
-                <h2 className="font-serif text-6xl md:text-8xl font-bold mb-6">
+              <div className="text-center text-white max-w-6xl px-4">
+                <h2 className="font-serif text-7xl md:text-9xl lg:text-[10rem] font-bold mb-8 leading-none">
                   {slide.title}
                 </h2>
                 {slide.subtitle && (
-                  <p className="text-xl md:text-2xl mb-8 opacity-90">
+                  <p className="text-2xl md:text-3xl mb-10 opacity-90 tracking-wide font-light">
                     {slide.subtitle}
                   </p>
                 )}
                 {slide.description && (
-                  <p className="text-lg md:text-xl mb-8 opacity-80 max-w-2xl mx-auto">
+                  <p className="text-xl md:text-2xl mb-12 opacity-80 max-w-4xl mx-auto font-light leading-relaxed">
                     {slide.description}
                   </p>
                 )}
                 <Link href={slide.link}>
-                  <Button className="btn-secondary text-lg px-10 py-6 hover:scale-105 transition-transform">
+                  <Button className="bg-premium-gold text-primary-brown hover:bg-warm-gold font-bold text-xl px-16 py-8 rounded-lg transition-all duration-300 hover:scale-105 premium-shadow tracking-wide">
                     {slide.buttonText}
                   </Button>
                 </Link>

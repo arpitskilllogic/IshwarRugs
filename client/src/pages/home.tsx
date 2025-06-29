@@ -34,88 +34,100 @@ export default function Home() {
       <HeroCarousel />
 
       {/* Brand Introduction */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="font-serif text-2xl md:text-3xl text-primary-brown leading-relaxed">
-            Fine handcrafted carpets since 1881. An exclusive collection - designed to stir emotion,<br/>
-            brought to life unlike any other. The hand knotted carpet, woven inch by inch. And the hand tufted<br/>
-            carpet, crafted with care and technique.
+      <section className="py-32 px-4 bg-gradient-to-b from-background via-luxury-brown to-background">
+        <div className="max-w-8xl mx-auto text-center">
+          <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl text-premium-gold leading-relaxed mb-8 font-light">
+            Fine handcrafted carpets since 1881
+          </h2>
+          <p className="text-xl md:text-2xl text-foreground/80 leading-relaxed max-w-6xl mx-auto font-light">
+            An exclusive collection - designed to stir emotion, brought to life unlike any other. 
+            The hand knotted carpet, woven inch by inch. And the hand tufted carpet, crafted with care and technique.
           </p>
         </div>
       </section>
 
       {/* Explore Our Rugs */}
-      <section className="py-20 bg-soft-gray">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-center text-primary-brown mb-16">
+      <section className="py-32 bg-gradient-to-b from-background to-luxury-brown">
+        <div className="max-w-8xl mx-auto px-4">
+          <h2 className="font-serif text-5xl md:text-7xl font-bold text-center text-premium-gold mb-20">
             EXPLORE OUR RUGS
           </h2>
           
           <Tabs defaultValue="style" className="w-full">
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-12">
-              <TabsTrigger value="style" className="font-semibold">BY STYLE</TabsTrigger>
-              <TabsTrigger value="collection" className="font-semibold">BY COLLECTION</TabsTrigger>
+            <TabsList className="grid w-full max-w-lg mx-auto grid-cols-2 mb-16 glass-effect h-14">
+              <TabsTrigger value="style" className="font-semibold text-lg">BY STYLE</TabsTrigger>
+              <TabsTrigger value="collection" className="font-semibold text-lg">BY COLLECTION</TabsTrigger>
             </TabsList>
             
-            <TabsContent value="style" className="space-y-20">
+            <TabsContent value="style" className="space-y-32">
               {/* Contemporary Section */}
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="grid lg:grid-cols-2 gap-16 items-center">
                 <div className="order-2 lg:order-1">
-                  <h3 className="font-serif text-4xl font-bold text-primary-brown mb-6">
+                  <h3 className="font-serif text-5xl md:text-6xl font-bold text-premium-gold mb-8">
                     CONTEMPORARY
                   </h3>
-                  <p className="text-lg text-primary-brown leading-relaxed mb-8">
+                  <p className="text-xl text-foreground/80 leading-relaxed mb-10 font-light">
                     The bridge between past and present, these home carpets combine traditional carpet 
                     design elements with contemporary stylistics and colours, evoking sensations that 
                     are familiar yet altogether new.
                   </p>
                   <Link href="/collections?category=contemporary">
-                    <Button className="btn-primary">
+                    <Button className="bg-premium-gold text-primary-brown hover:bg-warm-gold font-bold px-12 py-6 text-lg rounded-lg transition-all duration-300 hover:scale-105 premium-shadow">
                       EXPLORE THE COLLECTION
                     </Button>
                   </Link>
                 </div>
                 <div className="order-1 lg:order-2">
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-6">
                     {!contemporaryLoading && contemporaryCollections?.slice(0, 4).map((collection, index) => (
-                      <img
-                        key={collection.id}
-                        src={collection.heroImage}
-                        alt={collection.name}
-                        className="rounded-lg shadow-lg hover:shadow-xl transition-shadow image-hover-scale"
-                        loading="lazy"
-                      />
+                      <div key={collection.id} className="relative group overflow-hidden rounded-2xl premium-shadow">
+                        <img
+                          src={collection.heroImage}
+                          alt={collection.name}
+                          className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <h4 className="text-white font-serif text-lg font-bold">{collection.name}</h4>
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </div>
               </div>
 
               {/* Modern Section */}
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="grid lg:grid-cols-2 gap-16 items-center">
                 <div>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-6">
                     {!modernLoading && modernCollections?.slice(0, 4).map((collection, index) => (
-                      <img
-                        key={collection.id}
-                        src={collection.heroImage}
-                        alt={collection.name}
-                        className="rounded-lg shadow-lg hover:shadow-xl transition-shadow image-hover-scale"
-                        loading="lazy"
-                      />
+                      <div key={collection.id} className="relative group overflow-hidden rounded-2xl premium-shadow">
+                        <img
+                          src={collection.heroImage}
+                          alt={collection.name}
+                          className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <h4 className="text-white font-serif text-lg font-bold">{collection.name}</h4>
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-serif text-4xl font-bold text-primary-brown mb-6">
+                  <h3 className="font-serif text-5xl md:text-6xl font-bold text-premium-gold mb-8">
                     MODERN
                   </h3>
-                  <p className="text-lg text-primary-brown leading-relaxed mb-8">
+                  <p className="text-xl text-foreground/80 leading-relaxed mb-10 font-light">
                     Contemporary carpet designs that are current and modern, reflecting new and diverse 
                     thematic, stylistic and colour orientation. The contemporary rugs reflect geometrics, 
                     organics, abstract art, pop art, from the minimal to the bold and vibrant.
                   </p>
                   <Link href="/collections?category=modern">
-                    <Button className="btn-primary">
+                    <Button className="bg-premium-gold text-primary-brown hover:bg-warm-gold font-bold px-12 py-6 text-lg rounded-lg transition-all duration-300 hover:scale-105 premium-shadow">
                       EXPLORE THE COLLECTION
                     </Button>
                   </Link>
@@ -123,32 +135,37 @@ export default function Home() {
               </div>
 
               {/* Traditional Section */}
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="grid lg:grid-cols-2 gap-16 items-center">
                 <div className="order-2 lg:order-1">
-                  <h3 className="font-serif text-4xl font-bold text-primary-brown mb-6">
+                  <h3 className="font-serif text-5xl md:text-6xl font-bold text-premium-gold mb-8">
                     TRADITIONAL
                   </h3>
-                  <p className="text-lg text-primary-brown leading-relaxed mb-8">
+                  <p className="text-xl text-foreground/80 leading-relaxed mb-10 font-light">
                     Heralding age-old design themes, these are handmade Indian carpets with classic 
                     patterns, telling stories with traditional symbolism, motifs and cohesive colour. 
                     A varied range of carpet flooring in a combination of themes, materials and qualities.
                   </p>
                   <Link href="/collections?category=traditional">
-                    <Button className="btn-primary">
+                    <Button className="bg-premium-gold text-primary-brown hover:bg-warm-gold font-bold px-12 py-6 text-lg rounded-lg transition-all duration-300 hover:scale-105 premium-shadow">
                       EXPLORE THE COLLECTION
                     </Button>
                   </Link>
                 </div>
                 <div className="order-1 lg:order-2">
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-6">
                     {!traditionalLoading && traditionalCollections?.slice(0, 4).map((collection, index) => (
-                      <img
-                        key={collection.id}
-                        src={collection.heroImage}
-                        alt={collection.name}
-                        className="rounded-lg shadow-lg hover:shadow-xl transition-shadow image-hover-scale"
-                        loading="lazy"
-                      />
+                      <div key={collection.id} className="relative group overflow-hidden rounded-2xl premium-shadow">
+                        <img
+                          src={collection.heroImage}
+                          alt={collection.name}
+                          className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <h4 className="text-white font-serif text-lg font-bold">{collection.name}</h4>
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -276,7 +293,7 @@ export default function Home() {
                   className="w-full h-48 object-cover image-hover-scale"
                   loading="lazy"
                 />
-                <div class="absolute inset-0 bg-warm-gold bg-opacity-20"></div>
+                <div className="absolute inset-0 bg-warm-gold bg-opacity-20"></div>
               </div>
               <h3 className="font-serif text-2xl font-semibold text-primary-brown mb-4">
                 Creation
