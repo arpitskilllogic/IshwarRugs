@@ -1,4 +1,6 @@
 import { collections, products, inquiries, type Collection, type Product, type Inquiry, type InsertCollection, type InsertProduct, type InsertInquiry } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   // Collections
@@ -241,4 +243,71 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+export class DatabaseStorage implements IStorage {
+  async getCollections(): Promise<Collection[]> {
+    return await db.select().from(collections);
+  }
+
+  async getFeaturedCollections(): Promise<Collection[]> {
+    return await db.select().from(collections).where(eq(collections.featured, true));
+  }
+
+  async getCollectionBySlug(slug: string): Promise<Collection | undefined> {
+    const [collection] = await db.select().from(collections).where(eq(collections.slug, slug));
+    return collection || undefined;
+  }
+
+  async getCollectionsByCategory(category: string): Promise<Collection[]> {
+    return await db.select().from(collections).where(eq(collections.category, category));
+  }
+
+  async createCollection(insertCollection: InsertCollection): Promise<Collection> {
+    const [collection] = await db
+      .insert(collections)
+      .values(insertCollection)
+      .returning();
+    return collection;
+  }
+
+  async getProducts(): Promise<Product[]> {
+    return await db.select().from(products);
+  }
+
+  async getFeaturedProducts(): Promise<Product[]> {
+    return await db.select().from(products).where(eq(products.featured, true));
+  }
+
+  async getProductsByCollection(collectionId: number): Promise<Product[]> {
+    return await db.select().from(products).where(eq(products.collectionId, collectionId));
+  }
+
+  async getProductBySlug(slug: string): Promise<Product | undefined> {
+    const [product] = await db.select().from(products).where(eq(products.slug, slug));
+    return product || undefined;
+  }
+
+  async createProduct(insertProduct: InsertProduct): Promise<Product> {
+    const [product] = await db
+      .insert(products)
+      .values(insertProduct)
+      .returning();
+    return product;
+  }
+
+  async createInquiry(insertInquiry: InsertInquiry): Promise<Inquiry> {
+    const [inquiry] = await db
+      .insert(inquiries)
+      .values({
+        ...insertInquiry,
+        createdAt: new Date().toISOString(),
+      })
+      .returning();
+    return inquiry;
+  }
+
+  async getInquiries(): Promise<Inquiry[]> {
+    return await db.select().from(inquiries);
+  }
+}
+
+export const storage = new DatabaseStorage();

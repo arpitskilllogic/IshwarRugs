@@ -1,5 +1,6 @@
 import { pgTable, text, serial, integer, boolean, jsonb } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
+import { relations } from "drizzle-orm";
 import { z } from "zod";
 
 export const collections = pgTable("collections", {
@@ -50,6 +51,18 @@ export const insertInquirySchema = createInsertSchema(inquiries).omit({
   id: true,
   createdAt: true,
 });
+
+// Relations
+export const collectionsRelations = relations(collections, ({ many }) => ({
+  products: many(products),
+}));
+
+export const productsRelations = relations(products, ({ one }) => ({
+  collection: one(collections, {
+    fields: [products.collectionId],
+    references: [collections.id],
+  }),
+}));
 
 export type Collection = typeof collections.$inferSelect;
 export type Product = typeof products.$inferSelect;
