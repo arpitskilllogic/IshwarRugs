@@ -23,9 +23,21 @@ export default function Navigation() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/">
-              <h1 className="font-serif text-2xl font-bold text-primary-brown hover:text-warm-gold transition-colors cursor-pointer">
-                Ishwar Rugs
-              </h1>
+              <div className="flex items-center space-x-3 cursor-pointer">
+                <img
+                  src="https://i.postimg.cc/fy162xqr/Chat-GPT-Image-Jul-10-2025-02-12-10-PM.png"
+                  alt="Ishwar Rugs Logo"
+                  className="h-10 w-auto"
+                />
+                <div>
+                  <h1 className="font-serif text-2xl font-bold text-primary-brown hover:text-warm-gold transition-colors">
+                    Ishwar Rugs
+                  </h1>
+                  <div className="text-xs tracking-[0.3em] text-foreground/80 font-sans uppercase">
+                    Est. 1925
+                  </div>
+                </div>
+              </div>
             </Link>
           </div>
 

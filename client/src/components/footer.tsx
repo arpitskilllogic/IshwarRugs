@@ -1,38 +1,76 @@
 import { Link } from "wouter";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  Mail,
+  Phone,
+  MapPin,
+  ArrowRight,
+} from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
-export default function Footer() {
+export default function ModernFooter() {
   return (
-    <footer className="bg-warm-white py-16">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+    <footer className="w-full bg-gradient-to-b from-luxury-brown via-primary-brown to-background">
+      {/* Unified Newsletter + Footer */}
+      <div className="max-w-7xl mx-auto px-4 py-20">
+        {/* Newsletter */}
+        <div className="text-center mb-20">
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-premium-gold mb-6">
+            Stay Connected
+          </h2>
+          <p className="text-cream/80 text-xl mb-8 max-w-2xl mx-auto">
+            Be the first to discover our latest collections and exclusive designs
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <Input
+              type="email"
+              placeholder="Enter your email"
+              className="bg-white/10 border-white/20 text-white placeholder-white/60 focus:border-premium-gold"
+            />
+            <Button className="bg-premium-gold text-primary-brown hover:bg-warm-gold font-semibold px-8">
+              Subscribe
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+
+        {/* Main Footer Grid */}
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-12">
           {/* Brand */}
-          <div>
-            <h3 className="font-serif text-2xl font-bold text-primary-brown mb-6">
-              Ishwar Rugs
-            </h3>
-            <p className="text-primary-brown opacity-80 leading-relaxed mb-6">
-              Fine handcrafted carpets since 1881. Creating timeless pieces that 
-              transform spaces with elegance and sophistication.
-            </p>
+          <div className="lg:col-span-1">
+            <div className="mb-8">
+              <h3 className="font-serif text-3xl font-bold text-premium-gold mb-2">
+                ISHWAR
+              </h3>
+              <div className="text-xs tracking-[0.3em] text-foreground/60 font-sans uppercase mb-4">
+                Est. 1925
+              </div>
+              <p className="text-foreground/80 leading-relaxed">
+                Fine handcrafted carpets since 1925. Creating timeless pieces that
+                transform spaces with elegance and sophistication.
+              </p>
+            </div>
             <div className="flex space-x-4">
               <a
                 href="#"
-                className="text-primary-brown hover:text-warm-gold transition-colors"
+                className="text-foreground/60 hover:text-premium-gold transition-colors p-2 rounded-lg hover:bg-white/5"
                 aria-label="Facebook"
               >
                 <Facebook className="h-6 w-6" />
               </a>
               <a
                 href="#"
-                className="text-primary-brown hover:text-warm-gold transition-colors"
+                className="text-foreground/60 hover:text-premium-gold transition-colors p-2 rounded-lg hover:bg-white/5"
                 aria-label="Instagram"
               >
                 <Instagram className="h-6 w-6" />
               </a>
               <a
                 href="#"
-                className="text-primary-brown hover:text-warm-gold transition-colors"
+                className="text-foreground/60 hover:text-premium-gold transition-colors p-2 rounded-lg hover:bg-white/5"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-6 w-6" />
@@ -42,46 +80,42 @@ export default function Footer() {
 
           {/* Collections */}
           <div>
-            <h4 className="font-semibold text-primary-brown mb-6">Collections</h4>
-            <ul className="space-y-3">
+            <h4 className="font-serif text-xl font-bold text-foreground mb-6">Collections</h4>
+            <ul className="space-y-4">
               <li>
                 <Link
                   href="/collections?category=contemporary"
-                  className="text-primary-brown opacity-80 hover:text-warm-gold transition-colors"
+                  className="text-foreground/70 hover:text-premium-gold transition-colors group flex items-center"
                 >
-                  Contemporary
+                  <span>Contemporary</span>
+                  <ArrowRight className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
                 <Link
                   href="/collections?category=modern"
-                  className="text-primary-brown opacity-80 hover:text-warm-gold transition-colors"
+                  className="text-foreground/70 hover:text-premium-gold transition-colors group flex items-center"
                 >
-                  Modern
+                  <span>Modern</span>
+                  <ArrowRight className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
                 <Link
                   href="/collections?category=traditional"
-                  className="text-primary-brown opacity-80 hover:text-warm-gold transition-colors"
+                  className="text-foreground/70 hover:text-premium-gold transition-colors group flex items-center"
                 >
-                  Traditional
+                  <span>Traditional</span>
+                  <ArrowRight className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/collections?category=persian"
-                  className="text-primary-brown opacity-80 hover:text-warm-gold transition-colors"
+                  href="/collections"
+                  className="text-premium-gold font-semibold hover:text-warm-gold transition-colors group flex items-center"
                 >
-                  Persian
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-primary-brown opacity-80 hover:text-warm-gold transition-colors"
-                >
-                  Custom Design
+                  <span>View All Collections</span>
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </li>
             </ul>
@@ -89,122 +123,109 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="font-semibold text-primary-brown mb-6">Company</h4>
-            <ul className="space-y-3">
+            <h4 className="font-serif text-xl font-bold text-foreground mb-6">Company</h4>
+            <ul className="space-y-4">
               <li>
                 <Link
                   href="/about"
-                  className="text-primary-brown opacity-80 hover:text-warm-gold transition-colors"
+                  className="text-foreground/70 hover:text-premium-gold transition-colors group flex items-center"
                 >
-                  About Us
+                  <span>Our Heritage</span>
+                  <ArrowRight className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
                 <Link
                   href="/about"
-                  className="text-primary-brown opacity-80 hover:text-warm-gold transition-colors"
+                  className="text-foreground/70 hover:text-premium-gold transition-colors group flex items-center"
                 >
-                  Our Heritage
+                  <span>Craftsmanship</span>
+                  <ArrowRight className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="text-primary-brown opacity-80 hover:text-warm-gold transition-colors"
-                >
-                  Craftsmanship
-                </Link>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-primary-brown opacity-80 hover:text-warm-gold transition-colors"
-                >
-                  Sustainability
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-primary-brown opacity-80 hover:text-warm-gold transition-colors"
-                >
-                  Careers
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Support */}
-          <div>
-            <h4 className="font-semibold text-primary-brown mb-6">Support</h4>
-            <ul className="space-y-3">
               <li>
                 <Link
                   href="/contact"
-                  className="text-primary-brown opacity-80 hover:text-warm-gold transition-colors"
+                  className="text-foreground/70 hover:text-premium-gold transition-colors group flex items-center"
                 >
-                  Contact Us
+                  <span>Bespoke Design</span>
+                  <ArrowRight className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
                 <a
                   href="#"
-                  className="text-primary-brown opacity-80 hover:text-warm-gold transition-colors"
+                  className="text-foreground/70 hover:text-premium-gold transition-colors group flex items-center"
                 >
-                  Size Guide
+                  <span>Sustainability</span>
+                  <ArrowRight className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
               </li>
               <li>
                 <a
                   href="#"
-                  className="text-primary-brown opacity-80 hover:text-warm-gold transition-colors"
+                  className="text-foreground/70 hover:text-premium-gold transition-colors group flex items-center"
                 >
-                  Care Instructions
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-primary-brown opacity-80 hover:text-warm-gold transition-colors"
-                >
-                  Shipping Info
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-primary-brown opacity-80 hover:text-warm-gold transition-colors"
-                >
-                  Returns
+                  <span>Careers</span>
+                  <ArrowRight className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
               </li>
             </ul>
           </div>
-        </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-soft-gray pt-8">
+          {/* Contact */}
+          <div>
+            <h4 className="font-serif text-xl font-bold text-foreground mb-6">Get in Touch</h4>
+            <div className="space-y-4">
+              <div className="flex items-start space-x-3">
+                <MapPin className="h-5 w-5 text-premium-gold mt-1 flex-shrink-0" />
+                <div className="text-foreground/70 text-sm leading-relaxed">
+                  123 Artisan Quarter<br />Heritage District<br />Mumbai 400001, India
+                </div>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Phone className="h-5 w-5 text-premium-gold flex-shrink-0" />
+                <a href="tel:+919876543210" className="text-foreground/70 hover:text-premium-gold transition-colors text-sm">
+                  +91 98765 43210
+                </a>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Mail className="h-5 w-5 text-premium-gold flex-shrink-0" />
+                <a href="mailto:info@ishwarrugs.com" className="text-foreground/70 hover:text-premium-gold transition-colors text-sm">
+                  info@ishwarrugs.com
+                </a>
+              </div>
+            </div>
+            <div className="mt-8">
+              <Link href="/contact">
+                <Button
+                  variant="outline"
+                  className="w-full border-premium-gold text-premium-gold hover:bg-premium-gold hover:text-primary-brown"
+                >
+                  Contact Us
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="bg-background border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-primary-brown opacity-60 mb-4 md:mb-0">
-              © 2024 Ishwar Rugs. All rights reserved.
+            <p className="text-foreground/60 text-sm mb-4 md:mb-0">
+              © 2024 Ishwar Rugs. All rights reserved. • Crafted with passion since 1925.
             </p>
-            <div className="flex space-x-6">
-              <a
-                href="#"
-                className="text-primary-brown opacity-60 hover:opacity-100 transition-opacity"
-              >
+            <div className="flex space-x-6 text-sm">
+              <a href="#" className="text-foreground/60 hover:text-premium-gold transition-colors">
                 Privacy Policy
               </a>
-              <a
-                href="#"
-                className="text-primary-brown opacity-60 hover:opacity-100 transition-opacity"
-              >
+              <a href="#" className="text-foreground/60 hover:text-premium-gold transition-colors">
                 Terms of Service
               </a>
-              <a
-                href="#"
-                className="text-primary-brown opacity-60 hover:opacity-100 transition-opacity"
-              >
+              <a href="#" className="text-foreground/60 hover:text-premium-gold transition-colors">
                 Cookie Policy
               </a>
             </div>

@@ -1,5 +1,6 @@
 import { QueryClient, QueryFunction } from "@tanstack/react-query";
 
+// Utility to throw detailed error if response is not OK
 async function throwIfResNotOk(res: Response) {
   if (!res.ok) {
     const text = (await res.text()) || res.statusText;
@@ -7,10 +8,11 @@ async function throwIfResNotOk(res: Response) {
   }
 }
 
+// Helper for making API requests with JSON
 export async function apiRequest(
   method: string,
   url: string,
-  data?: unknown | undefined,
+  data?: unknown,
 ): Promise<Response> {
   const res = await fetch(url, {
     method,
@@ -23,24 +25,27 @@ export async function apiRequest(
   return res;
 }
 
+// Custom query function generator
 type UnauthorizedBehavior = "returnNull" | "throw";
-export const getQueryFn: <T>(options: {
+
+export function getQueryFn<T>(options: {
   on401: UnauthorizedBehavior;
-}) => QueryFunction<T> =
-  ({ on401: unauthorizedBehavior }) =>
-  async ({ queryKey }) => {
+}): QueryFunction<T> {
+  return async ({ queryKey }) => {
     const res = await fetch(queryKey[0] as string, {
       credentials: "include",
     });
 
-    if (unauthorizedBehavior === "returnNull" && res.status === 401) {
-      return null;
+    if (options.on401 === "returnNull" && res.status === 401) {
+      return null as T;
     }
 
     await throwIfResNotOk(res);
     return await res.json();
   };
+}
 
+// Global query client configuration
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

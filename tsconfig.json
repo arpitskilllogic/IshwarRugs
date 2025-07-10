@@ -12,7 +12,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "allowImportingTsExtensions": true,
-    "moduleResolution": "bundler",
+    "moduleResolution": "node", // ✅ Correct for Node + Vite/Drizzle
+    "resolveJsonModule": true,  // ✅ Optional but helpful for importing JSON
     "baseUrl": ".",
     "types": ["node", "vite/client"],
     "paths": {

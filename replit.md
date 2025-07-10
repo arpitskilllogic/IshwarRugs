@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a full-stack web application for Ishwar Rugs, a luxury carpet company established in 1881. The application showcases their handcrafted carpet collections with a focus on elegant design and user experience. Built with modern web technologies, it features a React frontend with Express.js backend, utilizing Drizzle ORM for database operations and shadcn/ui for the component library.
+This is a full-stack web application for Ishwar Rugs, a luxury carpet company established in 1925. The application showcases their handcrafted carpet collections with a focus on elegant design and user experience. Built with modern web technologies, it features a React frontend with Express.js backend, utilizing Drizzle ORM for database operations and shadcn/ui for the component library.
 
 ## System Architecture
 

@@ -1,0 +1,14 @@
+.swiper-dark .swiper-button-prev,
+.swiper-dark .swiper-button-next {
+  color: var(--premium-gold, #d4af37);
+}
+
+.swiper-dark .swiper-pagination-bullet {
+  background: #666;
+  opacity: 0.4;
+}
+
+.swiper-dark .swiper-pagination-bullet-active {
+  background: var(--premium-gold, #d4af37);
+  opacity: 1;
+}

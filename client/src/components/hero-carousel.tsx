@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 
@@ -16,29 +16,52 @@ interface CarouselSlide {
 const slides: CarouselSlide[] = [
   {
     id: 1,
-    title: "KNOTION",
-    subtitle: "~ Collection ~",
-    description: "Masterful knotwork in every thread",
-    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080",
-    link: "/collections/knotion",
-    buttonText: "EXPLORE COLLECTION"
+    title: "Velura",
+    description: "Step into softness with our signature collection.",
+    image: "https://i.postimg.cc/T343s5n6/Carpet-hero.png",
+    link: "/collections",
+    buttonText: "EXPLORE COLLECTION",
   },
   {
     id: 2,
-    title: "NEW ARRIVAL",
-    description: "Design emotion at its best. A preview of the latest from our core collections.",
-    image: "https://images.unsplash.com/photo-1591088398332-8a7791972843?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080",
+    title: "Jungle Weave",
+    description: "Nature-inspired textures for modern living.",
+    image: "https://i.postimg.cc/W3Q9Y81k/Jungle-carpet.png",
     link: "/collections",
-    buttonText: "VIEW NEW ARRIVALS"
+    buttonText: "EXPLORE COLLECTION",
   },
   {
     id: 3,
-    title: "ANTONYM",
-    description: "A rare beauty of opposites",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080",
-    link: "/collections/antonym",
-    buttonText: "DISCOVER ANTONYM"
-  }
+    title: "Medows",
+    description: "Subtle elegance in every thread.",
+    image: "https://i.postimg.cc/vTf0Jn4S/Medows-carpet.png",
+    link: "/collections",
+    buttonText: "EXPLORE COLLECTION",
+  },
+  {
+    id: 4,
+    title: "Obscure",
+    description: "A bold statement in color and form.",
+    image: "https://i.postimg.cc/y6ZpgMLX/Roxy-carpet.png",
+    link: "/collections",
+    buttonText: "EXPLORE COLLECTION",
+  },
+  {
+    id: 5,
+    title: "EchoFade",
+    description: "Raw beauty meets refined craftsmanship.",
+    image: "https://i.postimg.cc/MGnmkB4b/Rugged-carpet.png",
+    link: "/collections",
+    buttonText: "EXPLORE COLLECTION",
+  },
+  {
+    id: 6,
+    title: "Spaceeship",
+    description: "Explore the cosmos of comfort with our Spaceeship collection.",
+    image: "https://i.postimg.cc/9Mjc7v64/Chat-GPT-Image-Jul-9-2025-06-29-21-PM.png",
+    link: "/collections",
+    buttonText: "EXPLORE COLLECTION",
+  },
 ];
 
 export default function HeroCarousel() {
@@ -48,7 +71,6 @@ export default function HeroCarousel() {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
-
     return () => clearInterval(timer);
   }, []);
 
@@ -70,12 +92,10 @@ export default function HeroCarousel() {
         {slides.map((slide, index) => (
           <div
             key={slide.id}
-            className={`absolute inset-0 carousel-slide transition-all duration-1000 ${
+            className={`absolute inset-0 transition-all duration-1000 ${
               index === currentSlide ? "opacity-100" : "opacity-0"
             }`}
-            style={{
-              transform: `translateX(${(index - currentSlide) * 100}%)`
-            }}
+            style={{ transform: `translateX(${(index - currentSlide) * 100}%)` }}
           >
             <img
               src={slide.image}
@@ -83,26 +103,25 @@ export default function HeroCarousel() {
               className="w-full h-full object-cover"
               loading={index === 0 ? "eager" : "lazy"}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+
+            {/* TEXT + CTA */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center text-white max-w-6xl px-4">
-                <h2 className="font-serif text-7xl md:text-9xl lg:text-[10rem] font-bold mb-8 leading-none">
+              <div className="text-center max-w-6xl px-4">
+                <h2 className="font-serif text-7xl md:text-9xl lg:text-[10rem] font-bold mb-8 leading-none bg-gradient-to-br from-yellow-400 to-amber-600 text-transparent bg-clip-text drop-shadow-xl">
                   {slide.title}
                 </h2>
-                {slide.subtitle && (
-                  <p className="text-2xl md:text-3xl mb-10 opacity-90 tracking-wide font-light">
-                    {slide.subtitle}
-                  </p>
-                )}
+
                 {slide.description && (
-                  <p className="text-xl md:text-2xl mb-12 opacity-80 max-w-4xl mx-auto font-light leading-relaxed">
+                  <p className="text-xl md:text-2xl mb-12 font-light leading-relaxed text-yellow-300/90 backdrop-blur-sm">
                     {slide.description}
                   </p>
                 )}
+
                 <Link href={slide.link}>
-                  <Button className="bg-premium-gold text-primary-brown hover:bg-warm-gold font-bold text-xl px-16 py-8 rounded-lg transition-all duration-300 hover:scale-105 premium-shadow tracking-wide">
+                  <button className="px-8 py-4 text-white border border-white rounded-full text-lg font-semibold transition-all duration-300 backdrop-blur bg-white/10 hover:bg-white/20">
                     {slide.buttonText}
-                  </Button>
+                  </button>
                 </Link>
               </div>
             </div>
@@ -110,11 +129,11 @@ export default function HeroCarousel() {
         ))}
       </div>
 
-      {/* Navigation Arrows */}
+      {/* Arrows */}
       <Button
         variant="ghost"
         size="icon"
-        className="absolute left-8 top-1/2 transform -translate-y-1/2 text-white hover:text-warm-gold hover:bg-white/10 w-12 h-12"
+        className="absolute left-8 top-1/2 transform -translate-y-1/2 text-white hover:text-yellow-300 hover:bg-white/10 w-12 h-12"
         onClick={previousSlide}
       >
         <ChevronLeft className="h-8 w-8" />
@@ -122,13 +141,13 @@ export default function HeroCarousel() {
       <Button
         variant="ghost"
         size="icon"
-        className="absolute right-8 top-1/2 transform -translate-y-1/2 text-white hover:text-warm-gold hover:bg-white/10 w-12 h-12"
+        className="absolute right-8 top-1/2 transform -translate-y-1/2 text-white hover:text-yellow-300 hover:bg-white/10 w-12 h-12"
         onClick={nextSlide}
       >
         <ChevronRight className="h-8 w-8" />
       </Button>
 
-      {/* Carousel Dots */}
+      {/* Dots */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
         {slides.map((_, index) => (
           <button

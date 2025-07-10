@@ -4,13 +4,11 @@ import { useLocation } from "wouter";
 import { api } from "@/lib/api";
 import CollectionGrid from "@/components/collection-grid";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Collections() {
   const [location] = useLocation();
   const [activeCategory, setActiveCategory] = useState<string>("all");
 
-  // Parse URL parameters
   useEffect(() => {
     const searchParams = new URLSearchParams(location.split("?")[1] || "");
     const category = searchParams.get("category");
@@ -85,46 +83,33 @@ export default function Collections() {
 
   return (
     <div className="min-h-screen pt-20">
-      {/* Hero Section */}
-      <section className="py-20 bg-soft-gray">
+
+      {/* HERO SECTION */}
+      <section className="py-20 bg-gradient-to-b from-[#f3efe9] to-[#e7ded3] dark:from-[#3a2f2f] dark:to-[#1f1a1a] transition-colors duration-500">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <h1 className="font-serif text-5xl md:text-7xl font-bold text-primary-brown mb-6">
+          <h1 className="font-serif text-5xl md:text-7xl font-bold text-primary-brown dark:text-warm-gold mb-6">
             {getCategoryTitle()}
           </h1>
-          <p className="text-xl text-primary-brown opacity-80 leading-relaxed max-w-4xl mx-auto">
+          <p className="text-xl leading-relaxed max-w-4xl mx-auto text-primary-brown/80 dark:text-cream/80">
             {getCategoryDescription()}
           </p>
         </div>
       </section>
 
-      {/* Category Filters */}
-      <section className="py-12 border-b border-soft-gray">
-        <div className="max-w-7xl mx-auto px-4">
-          <Tabs value={activeCategory} onValueChange={setActiveCategory} className="w-full">
-            <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4">
-              <TabsTrigger value="all" className="font-semibold">All</TabsTrigger>
-              <TabsTrigger value="contemporary" className="font-semibold">Contemporary</TabsTrigger>
-              <TabsTrigger value="modern" className="font-semibold">Modern</TabsTrigger>
-              <TabsTrigger value="traditional" className="font-semibold">Traditional</TabsTrigger>
-            </TabsList>
-          </Tabs>
-        </div>
-      </section>
-
-      {/* Collections Grid */}
+      {/* COLLECTION GRID */}
       <section className="py-8">
         {loading ? (
           <div className="flex justify-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-brown"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-foreground"></div>
           </div>
         ) : collections && collections.length > 0 ? (
           <CollectionGrid collections={collections} showAll={true} />
         ) : (
           <div className="max-w-6xl mx-auto px-4 py-20 text-center">
-            <h3 className="font-serif text-2xl text-primary-brown mb-4">
+            <h3 className="font-serif text-2xl text-foreground mb-4">
               No collections found
             </h3>
-            <p className="text-primary-brown opacity-80 mb-8">
+            <p className="text-foreground/80 mb-8">
               We couldn't find any collections in this category. Please try a different category or browse all collections.
             </p>
             <Button 
@@ -137,7 +122,7 @@ export default function Collections() {
         )}
       </section>
 
-      {/* Call to Action */}
+      {/* CUSTOM DESIGN CTA */}
       <section className="py-20 bg-primary-brown">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-warm-gold mb-6">
