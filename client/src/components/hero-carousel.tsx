@@ -18,7 +18,7 @@ const slides: CarouselSlide[] = [
     id: 1,
     title: "Velura",
     description: "Step into softness with our signature collection.",
-    image: "https://i.postimg.cc/T343s5n6/Carpet-hero.png",
+    image: "https://i.postimg.cc/1Xmm1g6H/Chat-GPT-Image-Jul-10-2025-02-58-06-PM.png",
     link: "/collections",
     buttonText: "EXPLORE COLLECTION",
   },
@@ -56,7 +56,7 @@ const slides: CarouselSlide[] = [
   },
   {
     id: 6,
-    title: "Spaceeship",
+    title: "Spaceship",
     description: "Explore the cosmos of comfort with our Spaceeship collection.",
     image: "https://i.postimg.cc/9Mjc7v64/Chat-GPT-Image-Jul-9-2025-06-29-21-PM.png",
     link: "/collections",

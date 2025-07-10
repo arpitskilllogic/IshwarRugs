@@ -3,21 +3,20 @@ import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { toast } from "@/hooks/use-toast"
+import { toast } from "@/hooks/use-toast";
 
-// Dummy credentials for now
-const DUMMY_EMAIL = "admin@example.com";
-const DUMMY_PASSWORD = "admin123";
+// ✅ Real credentials
+const ADMIN_EMAIL = "Satyam.du.in@gmail.com";
+const ADMIN_PASSWORD = "Satyam@2025";
 
 export default function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [location, setLocation] = useLocation();
 
-  // Redirect if already logged in
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token) {
+    if (token === "authenticated") {
       setLocation("/admin/dashboard");
     }
   }, []);
@@ -25,14 +24,9 @@ export default function AdminLogin() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Dummy login check
-    if (email === DUMMY_EMAIL && password === DUMMY_PASSWORD) {
-      // ✅ Save dummy token
-      localStorage.setItem("token", "dummy-token");
-
+    if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+      localStorage.setItem("token", "authenticated");
       toast({ title: "Login successful!" });
-
-      // ✅ Redirect to dashboard
       setLocation("/admin/dashboard");
     } else {
       toast({

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "wouter";
 import AdminLayout from "./AdminLayout";
 
 const stats = [
@@ -9,6 +10,16 @@ const stats = [
 ];
 
 const AdminDashboard = () => {
+  const [location, setLocation] = useLocation();
+
+  // ✅ Protect route if not logged in
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token !== "authenticated") {
+      setLocation("/admin/login");
+    }
+  }, []);
+
   return (
     <AdminLayout>
       <div className="p-6 bg-soft-gray dark:bg-neutral-950 min-h-screen">
