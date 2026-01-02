@@ -1,15 +1,17 @@
-import "dotenv/config";
-import { Pool } from "pg";
-import { PrismaClient } from "@prisma/client";
-import * as schema from "@shared/schema";
+/**
+ * TEMP MOCK DATABASE
+ * -----------------
+ * Supabase / PostgreSQL access not provided.
+ * This mock allows the server to start without DB connection.
+ */
 
-console.log("Loaded DATABASE_URL:", process.env.DATABASE_URL); // 👈 Add this
-
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL must be set. Did you forget to provision a database?");
-}
-
-export const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-});
-export const db = new PrismaClient();
+export const db = {
+  user: {
+    findMany: async () => [],
+    findUnique: async () => null,
+    create: async (data: any) => data,
+  },
+  product: {
+    findMany: async () => [],
+  },
+} as any;
